@@ -2,10 +2,10 @@
 
 DriveMate is a full-stack car rental platform that enables users to browse, book, and manage cars seamlessly, while providing admins with full control over car listings and bookings.
 
-<!-- ## 🌐 Live Demo -->
+## 🌐 Live Demo
 
 <!-- Uncomment when hosted -->
-<!-- 🔗 [Visit DriveMate](https://your-live-site-link.com) -->
+🔗 [Visit DriveMate](https://drive-mate-lyart.vercel.app/)
 
 ## 📁 Repository Structure
 
@@ -93,11 +93,28 @@ npm start
 
 ---
 
-<!-- ## 📸 Screenshots -->
+## 📸 Screenshots
 
-<!-- Add your app screenshots here -->
-<!-- Example: ![Dashboard](./screenshots/dashboard.png) -->
 
+<div align="center">
+
+  <img src="./screenshots/home.png" alt="Home Page" width="30%" />
+  <img src="./screenshots/Cars.png" alt="Featured Cars" width="30%" />
+  <img src="./screenshots/carpage.png" alt="Cars Page" width="30%" />
+
+  <br/>
+
+  <img src="./screenshots/cardetail.png" alt="Car Detail" width="30%" />
+  <img src="./screenshots/mybooking.png" alt="My Bookings" width="30%" />
+  <img src="./screenshots/admindash.png" alt="Admin Dashboard" width="30%" />
+
+  <br/>
+
+  <img src="./screenshots/addcaradmin.png" alt="Admin Add Car" width="30%" />
+  <img src="./screenshots/admincarsmanage.png" alt="Admin Manage Cars" width="30%" />
+  <img src="./screenshots/adminmanagebooking.png" alt="Admin Manage Bookings" width="30%" />
+
+</div>
 
 ---
 
