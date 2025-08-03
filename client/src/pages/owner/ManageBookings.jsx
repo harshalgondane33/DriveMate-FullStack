@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import { dummyMyBookingsData } from '../../assets/assets'
+
 import Title from '../../components/owner/Title'
+import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast';
 
 const ManageBookings = () => {
-  const currency =import.meta.env.VITE_CURRENCY;
+  const {currency,axios,user} = useAppContext();
   const [bookings,setBookings] = useState([])
-  const fetchOwnerBookins = () => {
-    setBookings(dummyMyBookingsData)
+  const fetchOwnerBookings = async () => {
+    try {
+      const {data} = await axios.get('/api/booking/owner')
+      data.success ? setBookings(data.bookings) : toast.error(data.message) ;
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+  const changeBookingStatus = async (bookingId,status) => {
+    try {
+      const {data} = await axios.post('/api/booking/change-status',{bookingId,status})
+      if(data.success)
+      {
+        toast.success(data.message)
+        fetchOwnerBookings()
+      } 
+      else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
   useEffect(()=>{
-    fetchOwnerBookins()
-  },[])
+    user && fetchOwnerBookings()
+  },[user])
   return (
     <div className='px-4 pt-10 md:px-10 w-full'>
       <Title title="Manage Bookings" subTitle="Track all customer bookings, approve or cancel requests and manage booking statuses." />
@@ -42,7 +64,7 @@ const ManageBookings = () => {
                   </td>
                   <td className='p-3'>
                     {booking.status==='pending'?(
-                      <select value={booking.status} className='px-2 py-1.5 mt-1 border border-borderColor rounded-md text-gray-500 outline-none'>
+                      <select onChange={e=>changeBookingStatus(booking._id,e.target.value)} value={booking.status} className='px-2 py-1.5 mt-1 border border-borderColor rounded-md text-gray-500 outline-none'>
                         <option value="pending">Pending</option>
                         <option value="cancelled">Cancelled</option>
                         <option value="confirmed">Confirmed</option>
